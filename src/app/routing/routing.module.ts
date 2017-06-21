@@ -20,9 +20,14 @@ const appRoutes: Routes = [
     path: 'teachers-list',
     component: TeachersListComponent,
   },
+
+  {
+    path: 'teacher-add',
+    component: TeacherAddEditComponent
+  },
   
   {
-    path: 'teacher-add-edit/:id',
+    path: 'teacher-edit/:id',
     component: TeacherAddEditComponent
   },
 
@@ -32,7 +37,12 @@ const appRoutes: Routes = [
   },
   
   {
-    path: 'student-add-edit/:id',
+    path: 'student-add',
+    component: StudentAddEditComponent
+  },
+  
+  {
+    path: 'student-edit/:id',
     component: StudentAddEditComponent
   },
   {

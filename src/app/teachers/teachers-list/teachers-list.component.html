@@ -1,3 +1,41 @@
-<p>
-  teachers-list works!
-</p>
+<div class="container wrapper">
+  <div class="breadcrumb">
+    <h3 class="title">Teachers</h3>
+    <button type="button" class="btn btn-success pull-right btn-lg" [routerLink]="['/teacher-add']">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+    </button> 
+  </div>
+  <div>
+    <div class="teacher" *ngFor="let teacher of teachers">
+      <div class="card card-outline-primary">
+        <div class="card-block">
+          <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-3 col-xl-2 text-center">
+              <img class="rounded img-fluid" [src]="checkDefaultAvatar(teacher.photo)">
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-9 col-xl-10">
+              <div class="row">
+                <div class="col-xs-12 col-sm-9 col-md-10">
+                  <h4>{{teacher.firstName + ' ' + teacher.lastName}}</h4>
+                  <p>Discipline - {{teacher.discipline}}</p>
+                  <p>Date of birth - {{displayDate(teacher.dateOfBirth)}}</p>
+                  <p>{{teacher.biography}}</p>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-2 text-center">
+                  <button type="button" class="btn btn-warning button-control"
+                      [routerLink]="['/teacher-edit', teacher.id]">
+                    <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
+                  </button>
+                  <button type="button" class="btn btn-danger button-control" (click)="openDeleteModal(teacher)">
+                    <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
