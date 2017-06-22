@@ -47,16 +47,11 @@ export class TeachersListComponent implements OnInit {
 
   ngOnInit() {
     this.teachers = this.teachersService.getTeachers();
-    console.log(this.teachers);
   }
 
   openDeleteModal(teacher) {
     const modalRef = this.modalService.open(NgbdModalContent);
     modalRef.componentInstance.teacher = teacher;
-  }
-
-  deleteTeacher(teacherId){
-    console.log('delete ' + teacherId);
   }
 
   checkDefaultAvatar(avatarUrl: string) {

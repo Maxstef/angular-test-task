@@ -25,14 +25,8 @@ export class TeachersService {
   }
 
   addTeacher(newTeacher: Teacher): Teacher[]{
-    let allTeachers;
-    if(this.storageEmpty()){
-      this.teachersCached = this.initTeachers();
-    } else if(this.cacheEmpty()) {
-      this.teachersCached = JSON.parse(localStorage.getItem('teachers'));
-      _.sortBy(this.teachersCached, [(o) => { return o.id; }]);
-    }
-    allTeachers = this.teachersCached;
+    let allTeachers = this.getTeachers();
+    _.sortBy(allTeachers, [(o) => { return o.id; }]);
     if(allTeachers.length > 0){
       newTeacher.id = allTeachers[allTeachers.length - 1].id + 1;
     } else {
@@ -45,16 +39,16 @@ export class TeachersService {
   }
 
   updateTeacher(id, teacher){
-    let allTeachers;
-    if(this.cacheEmpty()) {
-      this.teachersCached = JSON.parse(localStorage.getItem('teachers'));
-    }
-    allTeachers =  this.teachersCached;
-    _.remove(allTeachers, (teacher) => {
-      return teacher.id == id;
-    });
+    let allTeachers = this.getTeachersWithioutId(id);
     teacher.id = id;
     allTeachers.push(teacher);
+    localStorage.setItem("teachers", JSON.stringify(allTeachers));
+    this.teachersCached = allTeachers;
+    return allTeachers;
+  }
+
+  deleteTeacher(id){
+    let allTeachers = this.getTeachersWithioutId(id);
     localStorage.setItem("teachers", JSON.stringify(allTeachers));
     this.teachersCached = allTeachers;
     return allTeachers;
@@ -67,7 +61,7 @@ export class TeachersService {
     return _.find(this.teachersCached, (o) => { return o.id == id; });
   }
 
-  deleteTeacher(id){
+  getTeachersWithioutId(id){
     let allTeachers;
     if(this.cacheEmpty()) {
       this.teachersCached = JSON.parse(localStorage.getItem('teachers'));
@@ -76,8 +70,6 @@ export class TeachersService {
     _.remove(allTeachers, (teacher) => {
       return teacher.id == id;
     });
-    localStorage.setItem("teachers", JSON.stringify(allTeachers));
-    this.teachersCached = allTeachers;
     return allTeachers;
   }
 
