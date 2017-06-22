@@ -22,4 +22,10 @@ describe('HomePageComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+
+  it(`should have as title 'Home'`, async(() => {
+    const fixture = TestBed.createComponent(HomePageComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app.title).toEqual('Home');
+  }));
 });

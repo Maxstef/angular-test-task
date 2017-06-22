@@ -46,7 +46,6 @@ export class StudentsListComponent implements OnInit {
 
   ngOnInit() {
     this.students = this.studentsService.getStudents();
-    console.log(this.students);
   }
 
   openDeleteModal(student) {

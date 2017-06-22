@@ -48,7 +48,6 @@ export class TeachersListComponent implements OnInit {
 
   ngOnInit() {
     this.teachers = this.teachersService.getTeachers();
-    console.log(this.teachers);
   }
 
   openDeleteModal(teacher) {

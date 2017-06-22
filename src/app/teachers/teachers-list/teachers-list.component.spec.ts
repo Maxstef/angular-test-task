@@ -1,10 +1,17 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { TeachersListComponent } from './teachers-list.component';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {APP_BASE_HREF} from "@angular/common";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { CalendarModule } from "primeng/primeng";
+import { TeacherAddEditComponent } from '../teacher-add-edit/teacher-add-edit.component';
 import { RoutingModule } from "../../routing/routing.module";
-import { TeachersModule } from "../teachers.module";
+import { FormsModule, ReactiveFormsModule }   from "@angular/forms";
+import { HomePageComponent } from "app/shared/home-page/home-page.component";
+import { StudentsModule } from "../../students/students.module";
+import { SharedModule } from "../../shared/shared.module";
 import { TeachersService } from "../teachers.service";
+import { TeachersListComponent } from './teachers-list.component';
+import { NgbdModalContent } from './teachers-list.component';
 
 describe('TeachersListComponent', () => {
   let component: TeachersListComponent;
@@ -12,9 +19,9 @@ describe('TeachersListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RoutingModule, TeachersModule],
-      declarations: [ TeachersListComponent ],
-      providers: [TeachersService]
+      imports: [BrowserAnimationsModule, RoutingModule, NgbModule.forRoot(), FormsModule, ReactiveFormsModule, StudentsModule, SharedModule, CalendarModule],
+      declarations: [ TeacherAddEditComponent, TeachersListComponent, NgbdModalContent ],
+      providers: [{provide: APP_BASE_HREF, useValue: '/'}, TeachersService]
     })
     .compileComponents();
   }));

@@ -38,7 +38,6 @@ export class TeacherAddEditComponent implements OnInit {
         } else {
           this.title = "Add teacher";
         }
-        console.log(this.id);
       });
     
   }
