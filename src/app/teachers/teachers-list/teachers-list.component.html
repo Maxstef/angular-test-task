@@ -1,11 +1,12 @@
 <div class="container wrapper">
   <div class="breadcrumb">
-    <h3 class="title">Teachers</h3>
+    <h3 class="title">{{title}}</h3>
     <button type="button" class="btn btn-success pull-right btn-lg" [routerLink]="['/teacher-add']">
       <i class="fa fa-plus" aria-hidden="true"></i>
-    </button> 
+    </button>
   </div>
   <div>
+    <p class="alert alert-info" *ngIf="teachers.length == 0">Teachers list is empty</p>
     <div class="teacher" *ngFor="let teacher of teachers">
       <div class="card card-outline-primary">
         <div class="card-block">
@@ -22,8 +23,7 @@
                   <p>{{teacher.biography}}</p>
                 </div>
                 <div class="col-xs-12 col-sm-3 col-md-2 text-center">
-                  <button type="button" class="btn btn-warning button-control"
-                      [routerLink]="['/teacher-edit', teacher.id]">
+                  <button type="button" class="btn btn-warning button-control" [routerLink]="['/teacher-edit', teacher.id]">
                     <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
                   </button>
                   <button type="button" class="btn btn-danger button-control" (click)="openDeleteModal(teacher)">

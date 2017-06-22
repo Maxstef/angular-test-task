@@ -13,7 +13,9 @@ import { HomePageComponent } from './home-page/home-page.component';
     RoutingModule
   ],
   exports: [
-    NavbarComponent
+    NavbarComponent,
+    HomePageComponent,
+    PageNotFoundComponent
   ],
   declarations: [NavbarComponent, PageNotFoundComponent, HomePageComponent]
 })

@@ -22,4 +22,10 @@ describe('StudentsListComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+
+  it(`should have as title 'students'`, async(() => {
+    const fixture = TestBed.createComponent(StudentsListComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app.title).toEqual('Students');
+  }));
 });

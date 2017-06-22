@@ -40,6 +40,7 @@ export class NgbdModalContent {
 export class StudentsListComponent implements OnInit {
 
   students: Student[];
+  title: string = "Students";
 
   constructor(private modalService: NgbModal, private studentsService: StudentsService) { }
 

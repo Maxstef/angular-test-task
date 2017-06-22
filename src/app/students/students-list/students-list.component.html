@@ -1,10 +1,11 @@
 <div class="container wrapper">
   <div class="breadcrumb">
-    <h3 class="title">Students</h3>
+    <h3 class="title">{{title}}</h3>
     <button type="button" class="btn btn-success pull-right btn-lg" [routerLink]="['/student-add']">
       <i class="fa fa-plus" aria-hidden="true"></i>
     </button> 
   </div>
+  <p class="alert alert-info" *ngIf="students.length == 0">Students list is empty</p>
   <div class="row">
     <div *ngFor="let student of students" class="student col-12 col-lg-6">
       <div class="card card-outline-primary">

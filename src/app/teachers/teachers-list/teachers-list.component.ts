@@ -42,11 +42,13 @@ export class TeachersListComponent implements OnInit {
 
   teachers: Teacher[];
   defaultAvatar = "./assets/default-avatar.png";
+  title: string = "Teachers";
 
   constructor(private modalService: NgbModal, private teachersService: TeachersService) { }
 
   ngOnInit() {
     this.teachers = this.teachersService.getTeachers();
+    console.log(this.teachers);
   }
 
   openDeleteModal(teacher) {

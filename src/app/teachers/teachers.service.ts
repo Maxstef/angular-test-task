@@ -26,9 +26,9 @@ export class TeachersService {
 
   addTeacher(newTeacher: Teacher): Teacher[]{
     let allTeachers = this.getTeachers();
-    _.sortBy(allTeachers, [(o) => { return o.id; }]);
+    _.sortBy(allTeachers, [(o) => { return parseInt(o.id); }]);
     if(allTeachers.length > 0){
-      newTeacher.id = allTeachers[allTeachers.length - 1].id + 1;
+      newTeacher.id = parseInt(allTeachers[allTeachers.length - 1].id) + 1;
     } else {
       newTeacher.id = 1;
     }

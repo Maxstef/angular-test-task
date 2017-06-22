@@ -26,9 +26,9 @@ export class StudentsService {
 
   addStudent(newStudent: Student): Student[]{
     let allStudents = this.getStudents();
-    _.sortBy(allStudents, [(o) => { return o.id; }]);
+    _.sortBy(allStudents, [(o) => { return parseInt(o.id); }]);
     if(allStudents.length > 0){
-      newStudent.id = allStudents[allStudents.length - 1].id + 1;
+      newStudent.id = parseInt(allStudents[allStudents.length - 1].id) + 1;
     } else {
       newStudent.id = 1;
     }
